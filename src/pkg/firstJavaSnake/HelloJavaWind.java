@@ -15,8 +15,8 @@ public class HelloJavaWind {
         JFrame frame = new JFrame( "HelloJava2" );
 
 
-        int x=30;
-        int y=20;
+        int x=20;
+        int y=10;
         ArrayList<Point> foodList = new ArrayList<Point> ();
         ArrayList<Snake> snakeList = new ArrayList<Snake> ();
 
