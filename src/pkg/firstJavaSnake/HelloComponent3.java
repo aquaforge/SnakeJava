@@ -129,9 +129,6 @@ class HelloComponent3 extends JComponent implements Runnable // implements Mouse
          stepX = this.getSize().width/ gridCountX;
          stepY = this.getSize().height/ gridCountY;
 
-        //for (int i=0 ; i<gridCountX;i++) g.drawLine(i*stepX,0,i*stepX,this.getSize().height);
-        //for (int i=0 ; i<gridCountY;i++) g.drawLine(0,i*stepY, this.getSize().width,i*stepY);
-
         for (int i=0 ; i<foodList.size();i++) {
             drawRectByDesk (g,foodList.get(i).X, foodList.get(i).Y, Color.GREEN);
         }
@@ -141,10 +138,8 @@ class HelloComponent3 extends JComponent implements Runnable // implements Mouse
             Color color = snakeList.get(i).getColor();
 
             for (int j = 0; j < body.size(); j++) {
-                //double d =(double)(body.size()-j)/body.size();
-                //d= 0.5 * (d+1);
                 double d = 1.0-(double)(body.size()-j)/50.0;
-                if (d<0.01) d=0.01;
+                if (d<0.02) d=0.02;
                 Color color1 = new Color((int)(d*color.getRed()),(int)(d*color.getGreen()), (int)(d*color.getBlue()));
                 drawRectByDesk(g, body.get(j).X, body.get(j).Y, color1);
             }
