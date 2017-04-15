@@ -69,7 +69,7 @@ class HelloComponent3 extends JComponent implements Runnable // implements Mouse
             }
             for (int i = 0; i < snakeList.size(); i++) {
                 LinkedList<Point> body = snakeList.get(i).getBody();
-                Color color = snakeList.get(i).getColor();
+                //Color color = snakeList.get(i).getColor();
                 for (int j = 0; j < body.size(); j++) {
                     if (p.equals(body.get(j))) b=true;
                 }
@@ -139,6 +139,7 @@ class HelloComponent3 extends JComponent implements Runnable // implements Mouse
         for (int i=0 ; i<snakeList.size();i++) {
             LinkedList<Point> body = snakeList.get(i).getBody();
             Color color = snakeList.get(i).getColor();
+
             for (int j = 0; j < body.size(); j++) {
                 drawRectByDesk(g, body.get(j).X, body.get(j).Y, color);
             }
