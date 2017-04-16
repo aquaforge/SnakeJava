@@ -17,19 +17,17 @@ public class HelloJavaWind {
 
         int x=20;
         int y=14;
-        ArrayList<Point> foodList = new ArrayList<Point> ();
+
+        Point foodPoint = new Point(1,1);
+
         ArrayList<Snake> snakeList = new ArrayList<Snake> ();
-
-        foodList.add(new Point(1,1));
-        //foodList.add(new Point(14,9));
-
         snakeList.add(new Snake(new Point(2,2), Color.RED));
         snakeList.add(new Snake(new Point(3,2), Color.BLUE));
         snakeList.add(new Snake(new Point(4,2), Color.magenta));
         snakeList.add(new Snake(new Point(5,2), Color.cyan));
         snakeList.add(new Snake(new Point(6,2), Color.ORANGE));
 
-        frame.add( new HelloComponent3( x,y, snakeList, foodList) );
+        frame.add( new HelloComponent3( x,y, snakeList, foodPoint) );
 
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.setSize( 900, 600 );

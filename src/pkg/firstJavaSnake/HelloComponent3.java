@@ -19,7 +19,7 @@ class HelloComponent3 extends JComponent implements Runnable // implements Mouse
     Thread myThread;
 
     ArrayList<Snake> snakeList;
-    ArrayList<Point> foodList;
+    Point foodPoint;
 
     private void Sleep (long millis){
         try {
@@ -38,7 +38,7 @@ class HelloComponent3 extends JComponent implements Runnable // implements Mouse
             for (int i=0 ; i<snakeList.size();i++) {
                 Date c0 = new Date();
                 Snake s = snakeList.get(i);
-                PathFind pathFind = new PathFind(snakeList,foodList,gridCountX,gridCountY);
+                PathFind pathFind = new PathFind(snakeList,foodPoint,gridCountX,gridCountY);
                 MoveDirection m=pathFind.FindNextStep(i);
                 if (checkIfEat(new Point (s.head().X,s.head().Y),m)){
                     s.growHead(m);}
@@ -64,9 +64,8 @@ class HelloComponent3 extends JComponent implements Runnable // implements Mouse
             b = false;
             p = new Point( random.nextInt(gridCountX), random.nextInt(gridCountY));
 
-            for (int i = 0; i < foodList.size(); i++) {
-                if (p.equals(foodList.get(i))) b=true;
-            }
+            if (p.equals(foodPoint)) b=true;
+
             for (int i = 0; i < snakeList.size(); i++) {
                 LinkedList<Point> body = snakeList.get(i).getBody();
                 //Color color = snakeList.get(i).getColor();
@@ -96,23 +95,21 @@ class HelloComponent3 extends JComponent implements Runnable // implements Mouse
                     break;
         }
 
-        for (int i=0 ; i<foodList.size();i++) {
-            if (head.equals(foodList.get(i))) {
-                bCheck=true;
-                Point p = GetNewFoodPoint();
-                foodList.get(i).X=p.X;
-                foodList.get(i).Y=p.Y;
-            }
+        if (head.equals(foodPoint)) {
+            bCheck=true;
+            Point p = GetNewFoodPoint();
+            foodPoint.X=p.X;
+            foodPoint.Y=p.Y;
         }
         return bCheck;
     }
 
 
-    public HelloComponent3(int gridX, int gridY, ArrayList<Snake> snakeList, ArrayList<Point> foodList) {
+    public HelloComponent3(int gridX, int gridY, ArrayList<Snake> snakeList, Point foodPoint) {
         gridCountX = gridX;
         gridCountY = gridY;
         this.snakeList = snakeList;
-        this.foodList = foodList;
+        this.foodPoint = foodPoint;
 
         myThread = new Thread(this);
         myThread.setDaemon(true);
@@ -129,9 +126,7 @@ class HelloComponent3 extends JComponent implements Runnable // implements Mouse
          stepX = this.getSize().width/ gridCountX;
          stepY = this.getSize().height/ gridCountY;
 
-        for (int i=0 ; i<foodList.size();i++) {
-            drawRectByDesk (g,foodList.get(i).X, foodList.get(i).Y, Color.GREEN);
-        }
+         drawRectByDesk (g,foodPoint.X, foodPoint.Y, Color.GREEN);
 
         for (int i=0 ; i<snakeList.size();i++) {
             LinkedList<Point> body = snakeList.get(i).getBody();
