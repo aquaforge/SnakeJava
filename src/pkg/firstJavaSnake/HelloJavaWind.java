@@ -15,8 +15,8 @@ public class HelloJavaWind {
         JFrame frame = new JFrame( "HelloJava2" );
 
 
-        int x=20;
-        int y=14;
+        int x=15;
+        int y=10;
 
         Point foodPoint = new Point(1,1);
 
