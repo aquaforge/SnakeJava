@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class HelloJavaWind {
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame( "HelloJava2" );
+        JFrame frame = new JFrame( "Snakes and Food" );
 
 
         int x=15;
